@@ -1,0 +1,36 @@
+Download Eclips from internet and install
+
+Search ---> hadoop common jar
+    ---->Download from 
+http://www.java2s.com/Code/Jar/h/Downloadhadoopcommonjar.htm
+
+Search ---> hadoop common jar
+    ---->Download from
+http://www.java2s.com/Code/Jar/h/Downloadhadoopmapreduceclientcore0231jar.htm
+	
+Step-1 
+select New Java project in Eclips
+create new package
+create new class
+
+step-2 
+ssh -p 7070 student@103.90.157.154 
+         (if connected from Home)
+		 
+Copy WordCount jar file from local system to Student user:
+
+scp WordCount.jar ssh student@172.16.0.70:/home/student/CSE_A/Anil
+(check with ls Command)
+
+Step-3 	
+Copy WordCount jar file from student to hduser
+scp WordCount.jar ssh hduser@192.168.100.20:/home/hduser/CSE_A/Anil
+(Check with hadoop fs -ls command) 
+
+step-4
+Run Jar file
+hadoop jar WordCount.jar /CSE_A/Anil/Sample /CSE_A/Anil/output*
+
+step-5
+open output* directory after succesfull execution.
+cat part-r-00000

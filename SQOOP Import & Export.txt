@@ -1,0 +1,64 @@
+sqoop import
+=============
+It will store the retrived data(from MYSQL) in to the default directory(If you are not mention the target directory)
+-----------------------------------------------------------------------------------------------------------------------
+sqoop import --connect jdbc:mysql://localhost:3306/20761A5434 --table student --username root --password cloudera -m 1
+default dir:/user/cloudera/
+
+
+It will store the retrived data(from MYSQL) in the specified target directory(Table must contain the primary key)
+-------------------------------------------------------------------------------------------------------------------
+sqoop import --connect jdbc:mysql://localhost:3306/20761A5434 --table student --username root --password cloudera --target-dir /20761A5434/tabledata
+
+It will store the retrived data(from MYSQL) in the specified target directory(Table may or may not contains the primary key)
+------------------------------------------------------------------------------------------------------------------------------
+sqoop import --connect jdbc:mysql://localhost:3306/20761A5434 --table student --username root --password cloudera --target-dir /20761A5434/tabledata -m 1
+
+It will display the list of data bases(from MYSQL)
+------------------------------------------------------
+sqoop list-databases --connect jdbc:mysql://localhost/ --username root --password cloudera
+
+It will display the list of tables in a data bases(from MYSQL)
+----------------------------------------------------------------
+sqoop list-tables --connect jdbc:mysql://localhost/20761A5434 --username root --password cloudera
+
+It will apply the where cluase
+-------------------------------
+sqoop import -connect jdbc:mysql://localhost/20761A5434 --username root --password cloudera --table student --where "sno > 333" --target-dir /20761A5434/studentcols -m 1
+
+It will return specific coloumns
+----------------------------------
+sqoop import -connect jdbc:mysql://localhost/20761A5434 --username root --password cloudera --table student --columns "sname" --target-dir /20761A5434/studentcolms -m 1
+
+sqoop export
+=============
+It will export data from HDFS to MYSQL
+----------------------------------------
+sqoop export --connect jdbc:mysql://localhost:3306/20761A5434 -m 1 --table employee --export-dir /20761A5434/employee/employee --username root --password cloudera
+
+
+
+sqoop import --connect jdbc:mysql://quickstart:3306/retail_db --password cloudera --username root --table departments --target-dir /user/cloudera/dept1; 
+
+hadoop fs -cat /user/cloudera/dept1/part*
+
+sqoop import -–connect jdbc:mysql://quickstart:3306/retail_db --password cloudera --username root --table departments –-m 3 --where “department_id>4” --target-dir /user/cloudera/dept2;
+
+hadoop fs -cat /user/cloudera/dept2/part*
+
+create table dept(department_id int not null default NULL auto_increment, department_name varchar(45) not null default 'NULL', primary key(department_id));
+
+sqoop export --connect jdbc:mysql://quickstart:3306/retail_db --password cloudera --username root --table dept –-export-dir /user/cloudera/dept2;
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+step1:First, we need to import the necessary libraries:
+
+from sklearn.datasets import load_iris
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+import matplotlib.pyplot as plt
+
+step 2
+Next, load the iris dataset:
+
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+step 3
+Split the data into training and testing sets:
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=None)
+
+step 4 :
+Create an instance of the DecisionTreeClassifier class
+
+tree_clf = DecisionTreeClassifier(max_depth=3)
+
+step 5:
+Fit the model on the training data:
+
+tree_clf.fit(X_train, y_train)
+
+DecisionTreeClassifier(max_depth=3)
+
+step 6
+Predict on the testing data:
+
+y_pred = tree_clf.predict(X_test)
+
+step 7:
+Calculate the accuracy of the model:
+
+accuracy = accuracy_score(y_test, y_pred)
+print('Accuracy:', accuracy)
+
+Accuracy: 0.9555555555555556
+
+
+step 7:
+Finally, we can visualize the decision tree using the plot_tree function:
+
+plt.figure(figsize=(15, 10))
+plot_tree(tree_clf, filled=True, feature_names=iris.feature_names, class_names=iris.target_names)
+plt.show()
+
+ 
+

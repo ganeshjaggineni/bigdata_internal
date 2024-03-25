@@ -1,0 +1,30 @@
+ssh student@172.16.10.14
+LbrceStudent
+----------------------
+ssh hduser@192.168.100.20
+ipc
+-----------------------------------
+Basic commands
+ls
+mkdir
+rmdir
+cat
+touchz
+vi
+gedit
+-----------------
+copyToLocal
+copyFromLocal
+cp
+test -d
+ Test Command
+d -> Checks if it is a directory or not.
+e -> Checks if it is a path or not.
+f -> Checks if it is a file or not.
+s -> Checks if it is an empty path or not.
+r -> Checks the path existence and read permission.
+w -> Checks the path existence and write permission.
+z -> Checks the file size.
+getmerge
+append
+

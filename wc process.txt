@@ -1,0 +1,49 @@
+D:\Anil\BDA lab R20\WC count> scp WordCount.jar ssh student@172.16.10.14:/home/student/2021CSE-C/ANIL
+student@172.16.10.14's password:
+-------------------------------
+get like this
+
+WordCount.jar                                                                         100% 3944     1.6MB/s   00:00
+-----------------------------------
+student@BIGDATA:~/2021CSE-C/ANIL$ scp WordCount.jar hduser@192.168.100.20:/home/hduser/2021CSE-C/ANIL/
+hduser@192.168.100.20's password:
+----------------------------------
+get like
+WordCount.jar                                                                         100% 3944     3.5MB/s   00:00
+---------------------------
+hduser@master-node-20:~/2021CSE-C/ANIL$ ls
+---------------
+WordCount.jar
+----------------------
+hduser@master-node-20:~/2021CSE-C/ANIL$ cat >>input.txt
+hi hello .....
+
+hi
+hi
+----------------------
+hduser@master-node-20:~/2021CSE-C/ANIL$ ls
+-------------------------
+input.txt  WordCount.jar
+------------------------
+
+hadoop fs -put /2021CSE-C/ANIL/input.txt  /2021CSE-C/ANIL/input.txt
+-----------------
+ hadoop fs -ls /2021CSE-C/ANIL/
+
+get like this
+
+Found 1 items
+-rw-r--r--   2 hduser supergroup         88 2024-01-11 12:20 /2021CSE-C/ANIL/input.txt
+------------------------
+
+hadoop jar WordCount.jar /2021CSE-C/ANIL/input.txt /2021CSE-C/ANIL/WordOutput
+
+------------
+hadoop fs -ls /2021CSE-C/ANIL/WordOutput/
+Found 2 items
+-rw-r--r--   2 hduser supergroup          0 2024-01-11 12:21 /2021CSE-C/ANIL/WordOutput/_SUCCESS
+-rw-r--r--   2 hduser supergroup        116 2024-01-11 12:21 /2021CSE-C/ANIL/WordOutput/part-r-00000
+hduser@master-node-20:~/2021CSE-C/ANIL$ hadoop fs -cat /2021CSE-C/ANIL/WordOutput/part*
+--------------------------------------
+
+
